@@ -7,8 +7,8 @@ model = joblib.load("used_car_price_model.pkl")
 
 st.title("Used Car Price Prediction")
 
-year = st.number_input("Year", 2000, 2026, 2020)
-kilometer = st.number_input("Kilometers Driven", 0, 500000, 50000)
+year = st.number_input("Year", 1988, 2022, 2020)
+kilometer = st.number_input("Kilometers Driven", 0, 2000000, 50000)
 
 make = st.selectbox("Make", sorted(['Honda', 'Maruti Suzuki', 'Hyundai', 'Toyota', 'Mercedes-Benz',
        'BMW', 'Skoda', 'Nissan', 'Renault', 'Tata', 'Volkswagen', 'Ford',
@@ -20,7 +20,7 @@ make = st.selectbox("Make", sorted(['Honda', 'Maruti Suzuki', 'Hyundai', 'Toyota
 
 fuel_type = st.selectbox(
     "Fuel Type",
-    ["Petrol", "Diesel", "Electric", "CNG", "Hybrid"]
+    ["Petrol", "Diesel", "CNG", "LPG", "Electric", "CNG + CNG", "Hybrid", "Petrol + CNG", "Petrol + LPG"]
 )
 
 transmission = st.selectbox(
@@ -60,12 +60,12 @@ color = st.selectbox(
 owner = st.selectbox(
     "Owner",
     [
-        "Unregistered",
+        "UnRegistered Car",
         "First",
         "Second",
         "Third",
         "Fourth",
-        "Four or More"
+        "4 or More"
     ]
 )
 
@@ -92,21 +92,21 @@ power_rpm = st.number_input("Power RPM", 1000, 10000, 6000)
 torque = st.number_input("Torque (Nm)", 20.0, 2000.0, 150.0)
 torque_rpm = st.number_input("Torque RPM", 1000, 10000, 4000)
 
-length = st.number_input("Length (mm)", 3000, 6000, 4300)
-width = st.number_input("Width (mm)", 1200, 2500, 1700)
-height = st.number_input("Height (mm)", 1000, 2500, 1500)
+length = st.number_input("Length (mm)", 3099, 5569, 4300)
+width = st.number_input("Width (mm)", 1475, 2220, 1700)
+height = st.number_input("Height (mm)", 1165, 1995, 1500)
 
 seating_capacity = st.number_input(
     "Seating Capacity",
     2,
-    10,
+    8,
     5
 )
 
 fuel_tank_capacity = st.number_input(
     "Fuel Tank Capacity",
-    20.0,
-    150.0,
+    15.0,
+    105.0,
     45.0
 )
 

@@ -92,13 +92,12 @@ The following preprocessing steps were performed:
 ### Missing Value Handling
 
 * Removed rows with excessive missing values.
-* Used group-wise imputation for important features.
-* Used median or mean imputation where appropriate.
+* Used median imputation for numerical features and most-frequent imputation for categorical features inside the training pipeline.
 
 ### Encoding
 
 * One Hot Encoding for nominal categorical variables.
-* Ordinal representation for ownership information.
+* One Hot Encoding for ownership information.
 * Implemented preprocessing using Scikit-Learn Pipelines and ColumnTransformer.
 
 ---
@@ -107,18 +106,18 @@ The following preprocessing steps were performed:
 
 ### Linear Regression
 
-* Train R²: 0.80
-* Test R²: 0.66
+* Train R²: 0.79
+* Test R²: 0.76
 
 ### Decision Tree Regressor
 
-* Train R²: 0.99
-* Test R²: 0.81
+* Train R²: 1.00
+* Test R²: 0.80
 
 ### Random Forest Regressor
 
 * Train R²: 0.97
-* Test R²: 0.87
+* Test R²: 0.91
 
 Random Forest achieved the best balance between bias and variance and was selected as the final model.
 
@@ -130,9 +129,9 @@ The model identified the following as the most important features:
 
 1. Power
 2. Torque
-3. Kilometer
-4. Fuel Tank Capacity
-5. Year
+3. Fuel Tank Capacity
+4. Kilometers driven
+5. Height and Length
 
 Interestingly, Engine size and Make contributed less than expected because much of their information was already captured by Power and other numerical features.
 
@@ -157,7 +156,7 @@ Interestingly, Engine size and Make contributed less than expected because much 
 ├── data/
 ├── notebook.ipynb
 ├── app.py
-├── used_car_pipeline.pkl
+├── used_car_price_model.pkl
 ├── requirements.txt
 └── README.md
 ```
@@ -198,6 +197,8 @@ This project helped in understanding:
 * Bias-Variance tradeoff
 * Feature importance interpretation
 
+The train/test split and Random Forest use `random_state=42` for reproducible results. The reported scores are R² values from the fixed holdout split; MAE and RMSE are also calculated in the notebook.
+
 ---
 
 ## Future Improvements
@@ -206,7 +207,7 @@ Potential improvements include:
 
 * Hyperparameter tuning
 * Advanced encoding techniques
-* Cross Validation
+* Hyperparameter tuning and stronger validation on new market data
 * XGBoost and LightGBM models
 * Model deployment on cloud platforms
 * Improved user interface for the web application
